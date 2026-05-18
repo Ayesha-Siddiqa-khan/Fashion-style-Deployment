@@ -15,10 +15,11 @@ spec:
       labels:
         app: fashion-style
     spec:
+      imagePullSecrets:
+        - name: ecr-creds
       containers:
         - name: fashion-style
-          # Placeholder image; the GitHub Actions workflow overwrites this on deploy.
-          image: 123456789012.dkr.ecr.us-east-1.amazonaws.com/fashion-style:latest
+          image: 257536659737.dkr.ecr.us-east-1.amazonaws.com/zeenkaar:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

@@ -63,9 +63,22 @@ jobs:
           printf '%s' "${{ secrets.KUBE_CONFIG }}" | base64 --decode > $HOME/.kube/config 2>/dev/null || \
           printf '%s' "${{ secrets.KUBE_CONFIG }}" > $HOME/.kube/config
 
-      - name: Apply Kubernetes manifests
+      - name: Apply namespace
         run: |
           kubectl apply -f k8s/namespace.yaml
+
+      - name: Create or update ECR pull secret
+        run: |
+          aws ecr get-login-password --region $AWS_REGION | \
+          kubectl create secret docker-registry ecr-creds \
+            --docker-server=${{ steps.login-ecr.outputs.registry }} \
+            --docker-username=AWS \
+            --docker-password-stdin \
+            -n fashion-style \
+            --dry-run=client -o yaml | kubectl apply -f -
+
+      - name: Apply deployment and service
+        run: |
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
 
