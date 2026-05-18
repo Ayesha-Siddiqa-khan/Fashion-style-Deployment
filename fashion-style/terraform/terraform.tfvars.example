@@ -1,0 +1,22 @@
+aws_region           = "us-east-1"
+project_name         = "fashion-style"
+vpc_name             = "AyeshaVPC"
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+public_subnet_azs    = ["us-east-1a", "us-east-1b"]
+
+# Leave empty to use the latest Ubuntu 22.04 AMI
+ami_id               = ""
+
+key_pair_name        = "my-key"
+master_instance_type = "t3.small"
+worker_instance_type = "t3.micro"
+
+security_group_name  = "Ayesha"
+
+iam_user_name        = "AyeshaUser"
+create_iam_access_key = true
+
+# ECR repository name must be lowercase
+# Requirement: "Zeenkaar" -> use lowercase "zeenkaar"
+ecr_repository_name  = "zeenkaar"
