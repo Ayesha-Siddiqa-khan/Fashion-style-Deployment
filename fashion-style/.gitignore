@@ -42,3 +42,10 @@ next-env.d.ts
 # Temporary files
 *.log
 tmp/
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate*
+terraform/terraform.tfvars
+terraform/crash.log
+terraform/crash.*.log
