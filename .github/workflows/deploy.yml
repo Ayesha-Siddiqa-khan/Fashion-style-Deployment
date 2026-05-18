@@ -69,11 +69,10 @@ jobs:
 
       - name: Create or update ECR pull secret
         run: |
-          aws ecr get-login-password --region $AWS_REGION | \
           kubectl create secret docker-registry ecr-creds \
             --docker-server=${{ steps.login-ecr.outputs.registry }} \
             --docker-username=AWS \
-            --docker-password-stdin \
+            --docker-password="$(aws ecr get-login-password --region $AWS_REGION)" \
             -n fashion-style \
             --dry-run=client -o yaml | kubectl apply -f -
 
