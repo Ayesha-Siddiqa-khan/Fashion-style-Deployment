@@ -36,7 +36,7 @@ export const WovenLightHero = () => {
     }
   }, [textControls, buttonControls]);
 
-  const headline = "Woven by Light";
+  const headline = "Ayesha Siddiqa";
   
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
