@@ -4,8 +4,6 @@ on:
   push:
     branches: [main]
 
-
-    
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
@@ -17,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    defaults:
+      run:
+        working-directory: fashion-style
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,6 +27,7 @@ jobs:
         with:
           node-version: "18"
           cache: "npm"
+          cache-dependency-path: fashion-style/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -43,8 +45,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./fashion-style
+          file: ./fashion-style/Dockerfile
           push: true
           tags: |
             ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
