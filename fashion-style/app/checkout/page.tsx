@@ -184,30 +184,30 @@ export default function CheckoutPage() {
 
 return (
       <SunnyBackground>
-      <div className="pt-24 pb-12 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="pt-20 md:pt-24 pb-8 md:pb-12 min-h-screen">
+        <div className="max-w-7xl mx-auto px-3 md:px-4 sm:px-6 lg:px-8 relative">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-6 md:mb-8"
         >
-          <Link href="/" className="text-neutral-500 hover:text-[#D4B483] text-sm uppercase tracking-wider">
+          <Link href="/" className="text-neutral-500 hover:text-[#D4B483] text-xs md:text-sm uppercase tracking-wider">
             ← Back to Shopping
           </Link>
-          <h1 className="text-3xl font-light text-white mt-2" style={{ fontFamily: 'Playfair Display, serif' }}>Checkout</h1>
+          <h1 className="text-2xl md:text-3xl font-light text-white mt-1 md:mt-2" style={{ fontFamily: 'Playfair Display, serif' }}>Checkout</h1>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="lg:col-span-2 space-y-4 md:space-y-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-6"
+              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-4 md:p-6"
             >
-              <h2 className="text-lg text-white font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Contact Information</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <h2 className="text-base md:text-lg text-white font-light mb-3 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Contact Information</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <div>
                   <label className={labelClass}>First Name</label>
                   <input
@@ -259,10 +259,10 @@ return (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-6"
+              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-4 md:p-6"
             >
-              <h2 className="text-lg text-white font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Shipping Address</h2>
-              <div className="space-y-4">
+              <h2 className="text-base md:text-lg text-white font-light mb-3 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Shipping Address</h2>
+              <div className="space-y-3 md:space-y-4">
                 <div>
                   <label className={labelClass}>Street Address</label>
                   <input
@@ -274,7 +274,7 @@ return (
                     className={inputClass}
                   />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                   <div>
                     <label className={labelClass}>Select City</label>
                     <select
@@ -282,7 +282,7 @@ return (
                       onChange={(e) => setSelectedCity(e.target.value)}
                       className={inputClass}
                     >
-                      <option value="" className="bg-neutral-900">Select City</option>
+                      <option value="" className="bg-neutral-900">City</option>
                       {shippingRates.map((rate) => (
                         <option key={rate.city} value={rate.city} className="bg-neutral-900">{rate.city}</option>
                       ))}
@@ -293,7 +293,7 @@ return (
                     <input
                       type="text"
                       name="zipCode"
-                      placeholder="ZIP Code"
+                      placeholder="ZIP"
                       value={formData.zipCode}
                       onChange={handleInputChange}
                       className={inputClass}
@@ -307,22 +307,22 @@ return (
                       onChange={handleInputChange}
                       className={inputClass}
                     >
-                      <option value="United States" className="bg-neutral-900">United States</option>
+                      <option value="United States" className="bg-neutral-900">US</option>
                       <option value="Canada" className="bg-neutral-900">Canada</option>
-                      <option value="United Kingdom" className="bg-neutral-900">United Kingdom</option>
-                      <option value="Australia" className="bg-neutral-900">Australia</option>
+                      <option value="United Kingdom" className="bg-neutral-900">UK</option>
+                      <option value="Australia" className="bg-neutral-900">AU</option>
                     </select>
                   </div>
                 </div>
               </div>
               {cityShipping && (
-                <div className="mt-4 p-3 bg-[#D4B483]/10 border border-[#D4B483]/30 rounded">
+                <div className="mt-3 md:mt-4 p-2 md:p-3 bg-[#D4B483]/10 border border-[#D4B483]/30 rounded">
                   <div className="flex items-center gap-2 text-[#D4B483]">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 md:w-5 h-4 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span className="text-sm">
-                      Shipping to {cityShipping.city}: ${cityShipping.rate} ({cityShipping.time})
+                    <span className="text-xs md:text-sm">
+                      {cityShipping.city}: ${cityShipping.rate}
                     </span>
                   </div>
                 </div>
@@ -333,14 +333,14 @@ return (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-6"
+              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-4 md:p-6"
             >
-              <h2 className="text-lg text-white font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Shipping Method</h2>
-              <div className="space-y-3">
+              <h2 className="text-base md:text-lg text-white font-light mb-3 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Shipping Method</h2>
+              <div className="space-y-2 md:space-y-3">
                 {shippingOptions.map((option) => (
                   <label
                     key={option.id}
-                    className={`flex items-center justify-between p-4 border rounded cursor-pointer transition-colors ${
+                    className={`flex items-center justify-between p-3 md:p-4 border rounded cursor-pointer transition-colors ${
                       selectedShippingOption === option.id
                         ? "border-[#D4B483] bg-[#D4B483]/10"
                         : "border-neutral-700 hover:border-neutral-600"
@@ -353,14 +353,14 @@ return (
                         value={option.id}
                         checked={selectedShippingOption === option.id}
                         onChange={() => setSelectedShippingOption(option.id)}
-                        className="mr-3 accent-[#D4B483]"
+                        className="mr-2 md:mr-3 accent-[#D4B483]"
                       />
                       <div>
-                        <div className="text-white font-light">{option.name}</div>
-                        <div className="text-sm text-neutral-500">{option.time}</div>
+                        <div className="text-white text-sm font-light">{option.name}</div>
+                        <div className="text-xs md:text-sm text-neutral-500">{option.time}</div>
                       </div>
                     </div>
-                    <div className="text-white font-light">
+                    <div className="text-white text-sm font-light">
                       {option.price === 0 ? "Free" : `$${option.price}`}
                     </div>
                   </label>
@@ -372,10 +372,10 @@ return (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-6"
+              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-4 md:p-6"
             >
-              <h2 className="text-lg text-white font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Payment Information</h2>
-              <div className="space-y-4">
+              <h2 className="text-base md:text-lg text-white font-light mb-3 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Payment Information</h2>
+              <div className="space-y-3 md:space-y-4">
                 <div>
                   <label className={labelClass}>Card Number</label>
                   <input
@@ -387,7 +387,7 @@ return (
                     className={inputClass}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 md:gap-4">
                   <div>
                     <label className={labelClass}>Expiry</label>
                     <input
@@ -420,13 +420,13 @@ return (
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-6 sticky top-24"
+              className="bg-neutral-900/40 rounded-xl border border-neutral-800 p-4 md:p-6 sticky top-24"
             >
-              <h2 className="text-lg text-white font-light mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Order Summary</h2>
-              <div className="space-y-4 mb-6 max-h-64 overflow-y-auto">
+              <h2 className="text-base md:text-lg text-white font-light mb-3 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Order Summary</h2>
+              <div className="space-y-3 md:space-y-4 mb-4 md:mb-6 max-h-48 md:max-h-64 overflow-y-auto">
                 {items.map((item) => (
-                  <div key={item.id} className="flex items-center gap-4">
-                    <div className="relative w-16 h-20 bg-neutral-800 rounded overflow-hidden flex-shrink-0">
+                  <div key={item.id} className="flex items-center gap-2 md:gap-4">
+                    <div className="relative w-12 md:w-16 h-14 md:h-20 bg-neutral-800 rounded overflow-hidden flex-shrink-0">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -435,32 +435,32 @@ return (
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="text-white text-sm truncate font-light">{item.name}</div>
-                      <div className="flex items-center gap-2 mt-2">
+                      <div className="text-white text-xs md:text-sm truncate font-light">{item.name}</div>
+                      <div className="flex items-center gap-1 md:gap-2 mt-1">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-6 h-6 flex items-center justify-center bg-neutral-800 rounded hover:bg-neutral-700 transition-colors text-white"
+                          className="w-5 md:w-6 h-5 md:h-6 flex items-center justify-center bg-neutral-800 rounded hover:bg-neutral-700 transition-colors text-white"
                         >
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-2 md:w-3 h-2 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
                           </svg>
                         </button>
-                        <span className="text-sm min-w-[24px] text-center text-white">{item.quantity}</span>
+                        <span className="text-xs md:text-sm min-w-[16px] md:min-w-[24px] text-center text-white">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-6 h-6 flex items-center justify-center bg-neutral-800 rounded hover:bg-neutral-700 transition-colors text-white"
+                          className="w-5 md:w-6 h-5 md:h-6 flex items-center justify-center bg-neutral-800 rounded hover:bg-neutral-700 transition-colors text-white"
                         >
-                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-2 md:w-3 h-2 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                           </svg>
                         </button>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-white text-sm font-light" style={{ fontFamily: 'Playfair Display, serif' }}>${(item.price * item.quantity).toFixed(2)}</div>
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-white text-xs md:text-sm font-light" style={{ fontFamily: 'Playfair Display, serif' }}>${(item.price * item.quantity).toFixed(2)}</div>
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-xs text-red-400 hover:text-red-300 mt-1"
+                        className="text-[10px] md:text-xs text-red-400 hover:text-red-300 mt-0.5 md:mt-1"
                       >
                         Remove
                       </button>
@@ -469,20 +469,20 @@ return (
                 ))}
               </div>
 
-              <div className="border-t border-neutral-800 pt-4 space-y-2">
-                <div className="flex justify-between text-sm">
+              <div className="border-t border-neutral-800 pt-3 md:pt-4 space-y-1 md:space-y-2">
+                <div className="flex justify-between text-xs md:text-sm">
                   <span className="text-neutral-500">Subtotal</span>
                   <span className="text-white">${subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs md:text-sm">
                   <span className="text-neutral-500">Shipping {selectedCity && `(${selectedCity})`}</span>
                   <span className="text-white">${shipping.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs md:text-sm">
                   <span className="text-neutral-500">Tax (8%)</span>
                   <span className="text-white">${tax.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-lg font-light pt-2 border-t border-neutral-800">
+                <div className="flex justify-between text-base md:text-lg font-light pt-2 border-t border-neutral-800">
                   <span className="text-white">Total</span>
                   <span className="text-[#D4B483]" style={{ fontFamily: 'Playfair Display, serif' }}>${total.toFixed(2)}</span>
                 </div>
@@ -491,7 +491,7 @@ return (
               <button 
                 onClick={handlePlaceOrder}
                 disabled={!formData.firstName || !formData.lastName || !formData.email || !formData.address || !selectedCity}
-                className="w-full mt-6 py-4 bg-[#D4B483] text-neutral-900 uppercase tracking-wider font-medium hover:bg-[#C4A473] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full mt-4 md:mt-6 py-3 md:py-4 bg-[#D4B483] text-neutral-900 uppercase tracking-wider font-medium hover:bg-[#C4A473] transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 Place Order
               </button>

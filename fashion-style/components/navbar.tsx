@@ -296,6 +296,10 @@ export default function Navbar() {
               >
                 Checkout
               </Link>
+              <div className="border-t border-white/5 my-2" />
+              <div className="px-4 py-3">
+                <VisitorCounter />
+              </div>
             </div>
           </motion.div>
         )}

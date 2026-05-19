@@ -9,23 +9,27 @@ interface VisitorContextType {
 
 const VisitorContext = createContext<VisitorContextType | undefined>(undefined);
 
+const STORAGE_KEY = "fashion-style-visitors";
+
 export function VisitorProvider({ children }: { children: ReactNode }) {
-  const [visitorCount, setVisitorCount] = useState(0);
+  const [visitorCount, setVisitorCount] = useState(150);
   const [isNewVisitor, setIsNewVisitor] = useState(false);
 
   useEffect(() => {
-    const today = new Date().toDateString();
     const lastVisit = localStorage.getItem("fashion-last-visit");
-    const count = parseInt(localStorage.getItem("fashion-visitor-count") || "0", 10);
+    const today = new Date().toDateString();
+    const isNew = lastVisit !== today;
+    setIsNewVisitor(isNew);
 
-    if (lastVisit !== today) {
-      setVisitorCount(count + 1);
-      setIsNewVisitor(true);
-      localStorage.setItem("fashion-visitor-count", String(count + 1));
+    if (isNew) {
       localStorage.setItem("fashion-last-visit", today);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      const total = stored ? parseInt(stored) + 1 : 151;
+      localStorage.setItem(STORAGE_KEY, String(total));
+      setVisitorCount(total);
     } else {
-      setVisitorCount(count);
-      setIsNewVisitor(false);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) setVisitorCount(parseInt(stored));
     }
   }, []);
 

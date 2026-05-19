@@ -41,23 +41,23 @@ function ShopContent() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-12"
+        className="text-center mb-8 md:mb-12"
       >
-        <h1 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>Shop</h1>
-        <p className="text-neutral-400 font-light tracking-wide">Browse our curated collection</p>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-2 md:mb-4 tracking-tight" style={{ fontFamily: 'Playfair Display, serif' }}>Shop</h1>
+        <p className="text-neutral-400 font-light tracking-wide text-sm md:text-base">Browse our curated collection</p>
       </motion.div>
 
       <motion.div 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="flex flex-wrap justify-center gap-3 mb-8"
+        className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8"
       >
         {genderCategories.map((gender) => (
           <button
             key={gender.id}
             onClick={() => setActiveGender(gender.id)}
-            className={`px-8 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-300 ${
+            className={`px-4 md:px-6 lg:px-8 py-2 md:py-3 text-xs md:text-sm font-medium uppercase tracking-wider transition-all duration-300 ${
               activeGender === gender.id
                 ? "bg-[#D4B483] text-neutral-900"
                 : "bg-neutral-900/60 text-neutral-400 border border-neutral-700 hover:border-[#D4B483] hover:text-white"
@@ -72,13 +72,13 @@ function ShopContent() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="flex flex-wrap justify-center gap-2 mb-12"
+        className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12 px-2"
       >
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
+            className={`px-3 md:px-4 py-1.5 md:py-2 text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
               activeCategory === category
                 ? "text-[#D4B483]"
                 : "text-neutral-500 hover:text-white"
@@ -89,7 +89,7 @@ function ShopContent() {
         ))}
       </motion.div>
 
-      <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <motion.div layout className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
         <AnimatePresence mode="popLayout">
           {filteredProducts.map((product, index) => (
             <motion.div
@@ -122,8 +122,8 @@ function ShopContent() {
 export default function ShopPage() {
   return (
     <BackgroundGlow>
-    <div className="pt-24 pb-12 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div className="pt-20 md:pt-24 pb-8 md:pb-12 min-h-screen">
+      <div className="max-w-7xl mx-auto px-3 md:px-4 sm:px-6 lg:px-8 relative">
         <Suspense fallback={
           <div className="text-center py-20">
             <div className="w-8 h-8 border-2 border-[#D4B483] border-t-transparent rounded-full animate-spin mx-auto" />

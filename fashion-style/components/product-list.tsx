@@ -24,25 +24,25 @@ export default function ProductList({ title = "Our Collection", showFilters = tr
   };
 
   return (
-    <section id="products" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="products" className="py-12 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-3 md:px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <span className="inline-block text-xs font-medium tracking-[0.25em] text-amber-600 uppercase mb-4">
+          <span className="inline-block text-xs font-medium tracking-[0.25em] text-amber-600 uppercase mb-2 md:mb-4">
             Curated Selection
           </span>
-          <h2 className="text-4xl md:text-5xl font-light text-neutral-900 mb-6 tracking-tight">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-neutral-900 mb-4 md:mb-6 tracking-tight">
             {title}
           </h2>
-          <p className="text-neutral-500 max-w-2xl mx-auto text-lg leading-relaxed">
-            Discover our curated collection of premium fashion pieces, each selected for exceptional quality and timeless style
+          <p className="text-neutral-500 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed px-2 md:px-0">
+            Discover our curated collection of premium fashion pieces
           </p>
-          <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-8" />
+          <div className="w-12 md:w-16 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-6 md:mt-8" />
         </motion.div>
 
         {showFilters && (
@@ -51,7 +51,7 @@ export default function ProductList({ title = "Our Collection", showFilters = tr
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3 mb-16"
+            className="flex flex-wrap justify-center gap-2 md:gap-3 mb-8 md:mb-16 px-2"
           >
             {categories.map((category, index) => (
               <motion.button
@@ -59,7 +59,7 @@ export default function ProductList({ title = "Our Collection", showFilters = tr
                 onClick={() => handleCategoryChange(category)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`relative px-8 py-3 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-300 overflow-hidden ${
+                className={`relative px-4 md:px-8 py-2 md:py-3 text-xs font-semibold uppercase tracking-[0.15em] transition-all duration-300 overflow-hidden ${
                   activeCategory === category
                     ? "text-white"
                     : "text-neutral-500 hover:text-neutral-900"
@@ -83,7 +83,7 @@ export default function ProductList({ title = "Our Collection", showFilters = tr
           </motion.div>
         )}
 
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div layout className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product, index) => (
               <motion.div

@@ -29,20 +29,20 @@ function OrderCard({ order }: { order: Order }) {
       animate={{ opacity: 1, y: 0 }}
       className="bg-neutral-900/40 rounded-xl border border-neutral-800 overflow-hidden"
     >
-      <div className="p-6">
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+      <div className="p-4 md:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 md:gap-4 mb-3 md:mb-4">
           <div>
-            <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Order ID</p>
-            <p className="text-[#D4B483] text-xl font-light" style={{ fontFamily: 'Playfair Display, serif' }}>{order.id}</p>
+            <p className="text-neutral-500 text-[10px] md:text-xs uppercase tracking-wider mb-1">Order ID</p>
+            <p className="text-[#D4B483] text-base md:text-xl font-light" style={{ fontFamily: 'Playfair Display, serif' }}>{order.id}</p>
           </div>
           <div className="text-right">
-            <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Total</p>
-            <p className="text-white text-xl font-light" style={{ fontFamily: 'Playfair Display, serif' }}>${order.total.toFixed(2)}</p>
+            <p className="text-neutral-500 text-[10px] md:text-xs uppercase tracking-wider mb-1">Total</p>
+            <p className="text-white text-base md:text-xl font-light" style={{ fontFamily: 'Playfair Display, serif' }}>${order.total.toFixed(2)}</p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4 mb-4 text-sm">
-          <span className={`px-3 py-1 rounded-full text-xs uppercase tracking-wider ${
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-4 text-xs md:text-sm">
+          <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-xs uppercase tracking-wider ${
             order.status === "delivered" ? "bg-green-500/20 text-green-400" :
             order.status === "shipped" ? "bg-blue-500/20 text-blue-400" :
             order.status === "out_for_delivery" ? "bg-yellow-500/20 text-yellow-400" :
@@ -50,10 +50,10 @@ function OrderCard({ order }: { order: Order }) {
           }`}>
             {order.status.replace("_", " ")}
           </span>
-          <span className="text-neutral-500">
+          <span className="text-neutral-500 text-xs">
             {new Date(order.createdAt).toLocaleDateString("en-US", {
               year: "numeric",
-              month: "long",
+              month: "short",
               day: "numeric",
             })}
           </span>
@@ -171,15 +171,15 @@ function OrdersContent() {
   const displayOrders = hasSearched ? searchedOrders : orders;
 
   return (
-    <div className="pt-24 pb-12 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-20 md:pt-24 pb-8 md:pb-12 min-h-screen">
+      <div className="max-w-4xl mx-auto px-3 md:px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-8 md:mb-12"
         >
-          <h1 className="text-4xl font-light text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Your Orders</h1>
-          <p className="text-neutral-400">Track and manage your orders</p>
+          <h1 className="text-2xl md:text-4xl font-light text-white mb-2 md:mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Your Orders</h1>
+          <p className="text-neutral-400 text-sm md:text-base">Track and manage your orders</p>
         </motion.div>
 
         {!orderIdParam && orders.length === 0 && (
