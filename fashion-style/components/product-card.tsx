@@ -84,6 +84,9 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             <span className="text-[10px] md:text-xs text-neutral-500">{product.rating}</span>
           </div>
         </div>
+        <p className="text-xs md:text-sm text-neutral-600 line-clamp-2 leading-relaxed">
+          {product.description}
+        </p>
         <p className="text-sm md:text-lg font-light text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
           <span className="text-neutral-500 text-xs md:text-sm mr-0.5 md:mr-1">$</span>
           {product.price}
