@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/cart-context";
 import { products } from "@/data/products";
+import VisitorCounter from "./visitor-counter";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -126,7 +127,9 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-4">
+            <VisitorCounter />
+            <div className="flex items-center gap-1">
             <div 
               className="relative"
               onMouseEnter={() => setIsSearchOpen(true)}
@@ -241,6 +244,7 @@ export default function Navbar() {
                 )}
               </svg>
             </motion.button>
+          </div>
           </div>
         </div>
       </div>
